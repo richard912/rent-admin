@@ -1,0 +1,119 @@
+<% content_for(:side_bar) do %>
+	<%= render 'dashboards/leftsidebar' %>
+<% end %>
+
+<%= form_for(@listing) do |f| %>
+  <div class="div-listings">
+    <div class="col-lg-12">
+      <div class="div-backlisting">
+        <%= link_to '< Back', listings_path, :class=>'btn btn-default' %>
+      </div>
+      <div class="div-showing">
+      	<div class="col-lg-11" style="padding: 0 0">
+      		<div class="col-lg-2">
+	          <div class="field">
+	            <%= f.label :id, 'Listing ID:' %>
+	            <%= @listing.id %>
+	          </div>
+	          <div class="hidden-md hidden-sm hidden-xs">
+	            <br/><br/>
+	          </div>
+	          <div class="field">
+	            <%= f.label :status, 'Status:' %>
+							<span class="<%= @listing.status == 'Active' ? 'active' : 'inactive' %>">
+								<%= @listing.status %>
+							</span>
+	          </div>
+	        </div>
+	        <div class="col-lg-2">
+	          <div class="field">
+	            <%= f.label :listing_type, 'Type:' %>
+	            <%= @listing.listing_type %>
+	          </div>
+	          <div class="hidden-md hidden-sm hidden-xs">
+	            <br/><br/>
+	          </div>
+	          <div class="field">
+	            <%= f.label :state, 'State:' %>
+	            <%= @listing.state %>
+	          </div>
+	        </div>
+	        <div class="col-lg-2">
+	          <div class="field">
+	            <%= f.label :walk_score, 'Walk score:' %>
+	            <%= @listing.walk_score %>
+	          </div>
+	          <div class="hidden-md hidden-sm hidden-xs">
+	            <br/><br/>
+	          </div>
+	          <div class="field">
+	            <%= f.label :beds, 'Beds:' %>
+	            <%= @listing.beds %>
+	          </div>
+	        </div>
+	        <div class="col-lg-2">
+	          <div class="field">
+	            <%= f.label :year_built, 'Year built:' %>
+	            <%= @listing.year_built %>
+	          </div>
+	          <div class="hidden-md hidden-sm hidden-xs">
+	            <br/><br/>
+	          </div>
+	          <div class="field">
+	            <%= f.label :baths, 'Baths:' %>
+	            <%= @listing.baths %>
+	          </div>
+	        </div>
+	        <div class="col-lg-2">
+	          <div class="field">
+	            <%= f.label :price_per_sqft, 'Price per sqft:' %>
+	            <%= @listing.price_per_sqft %>
+	          </div>
+	          <div class="hidden-md hidden-sm hidden-xs">
+	            <br/><br/>
+	          </div>
+	          <div class="field">
+	            <%= f.label :lot_size, 'Lot size:' %>
+	            <%= @listing.lot_size %>
+	          </div>
+	        </div>
+	        <div class="col-lg-2">
+	          <div class="field">
+	            <%= f.label :mls_id, 'MLS ID:' %>
+	            M<%= @listing.mls_id %>
+	          </div>
+	        </div>
+      	</div>
+        <div class="col-lg-1 text-center">
+        	<%= link_to 'Edit', listing_path(@listing), :class=>'btn btn-sm btn-primary' %>
+          <p></p>
+          <%= link_to activate_listing_listings_path(@listing), :class=>'btn btn-sm btn-danger', method: :post do %>
+          	<%= @listing.status == 'Active' ? 'Deactivate' : 'Activate' %>
+          <% end %>
+          <p></p>
+          <%= link_to 'Update', listing_path(@listing), :class=>'btn btn-sm btn-success' %>
+        </div>
+      </div>
+      <div class="div-showing">
+      	<div class="col-lg-4 col-offset-lg-8">
+	      	<%= f.label :agent_id, 'Agent:' %>
+	      	<%= f.select :agent_id, @agents, {}, :class => 'js-select' %>
+	      </div>
+      </div>
+      <div class="div-showing">
+      	<div class="col-lg-12">
+	      	<div class="field">
+	      		<%= f.label :description, 'Description:', :style=>'vertical-align:top;' %>
+	      		<%= f.text_area :description, :rows=>'6', :class=>'form-control' %>
+	      	</div>
+	      </div>
+      	<div class="field">
+      		<div class="col-lg-12">
+	      		<%= f.label :agent_id, 'Pictures:', :style=>'vertical-align:top' %>
+	      		<%= image_tag @pics.first.avatar.url(:large), height: '135' %>
+	        </div>
+      	</div>
+      </div>
+    </div>
+  </div>
+<% end %>

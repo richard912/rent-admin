@@ -1,0 +1,87 @@
+<% content_for(:side_bar) do %>
+	<%= render 'dashboards/leftsidebar' %>
+<% end %>
+
+<div class="div-agents">
+	<div class="col-lg-12">
+    <div class="div-newagent">
+      <button class="btn btn-success" data-toggle="modal" id="btn_newagent">Create new agent</button>
+    </div>
+		<div class="div-search">
+      <%= simple_form_for(:agents, url: search_agents_path, method: :post) do %>
+        <div class="col-lg-6 div-nopadding">
+          <div class="col-lg-6 div-margin-bottom">
+            <label>Status:</label>
+            <%= select_tag "status", options_for_select(["", "Active", "Inactive"], @status), :class=>'js-select', "data-placeholder" => "Select..." %>
+          </div>
+          <div class="col-lg-6 div-margin-bottom">
+            <label>State:</label>
+            <%= select_tag "state", options_for_select(t("state_names"), @state), :class=>'js-select', "data-placeholder" => "Select..."  %>
+          </div>
+        </div>
+        <div class="col-lg-6 div-nopadding">
+          <div class="col-lg-9 div-margin-bottom">
+            <label>Search:</label>
+            <%= text_field_tag "search", nil, :class=>"form-control", :autocomplete=>:off, :value=>@search %>
+          </div>
+          <div class="col-lg-3">
+            <%= button_tag(type: 'submit', :class=>'btn btn-primary') do %>
+              Search
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="div-existing" id="div-agentstable">
+      <%= render 'agents' %>
+    </div>
+	</div>
+</div>
+
+<div class="modal fade" id="newAgent" tabindex="-1" role="dialog" aria-labelledby="newAgentLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="newAgentLabel">New Agent Creator</h4>
+      </div>
+      <%= simple_form_for(:newagent, url: cnew_agents_path, method: :post, :id=>'form_new_agent', html: {multipart: true}) do %>
+        <div class="modal-body">
+          <div class="field text-center">
+            <%#= file_field_tag :avatar %>
+            <label for="file-upload" class="custom-file-upload" style="border:1px solid #9A9590;padding:2em;color:#9A9590;width:auto;">
+              <i class="fa fa-plus-circle" style="font-size:5em;"></i><br/>UPLOADING<br/>PROFILE PICTURE
+            </label>
+            <input id="file-upload" type="file" style="display:none" name="avatar" required="required" />
+          </div>
+          <div class="field">
+            <label>First name:</label>
+            <%= text_field_tag "first_name", nil, :class=>'form-control', :required=>true, autocomplete: "off" %>
+          </div>    
+          <div class="field">
+            <label>Last name:</label>
+            <%= text_field_tag "last_name", nil, :class=>'form-control', :required=>true, autocomplete: "off" %>
+          </div>    
+          <div class="field">
+            <label>Email:</label>
+            <%= email_field_tag "email", nil, :class=>'form-control', :required=>true, autocomplete: "off" %>
+          </div>    
+          <div class="field">
+            <label>Password:</label>
+            <%= password_field_tag "password", nil, :class=>'form-control', :required=>true %>
+          </div>    
+          <div class="field">
+            <label>Confirm Password:</label>
+            <%= password_field_tag "password_confirmation", nil, :class=>'form-control', :required=>true %>
+          </div>    
+        </div>
+        <div class="modal-body text-center">
+          <%= button_tag(type: 'submit', :class=>'btn btn-primary', :id=>'btn_createagent') do %>
+            Create Agent
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,36 @@
+# default: &default
+#   adapter: mysql2
+#   encoding: utf8
+#   pool: 5
+#   username: root
+#   password:
+#   host: localhost
+
+# development:
+#   <<: *default
+#   database: rent-admin_development
+
+#   <<: *default
+#   database: rent-admin_test
+
+# production:
+#   <<: *default
+#   database: rent_database
+#   username: rent-admin
+#   password: dir123123
+  # password: <%= ENV['RENT-ADMIN_DATABASE_PASSWORD'] %>
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  database: rent_dev
+  pool: 5
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

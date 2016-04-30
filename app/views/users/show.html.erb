@@ -1,0 +1,102 @@
+<% content_for(:side_bar) do %>
+  <%= render 'dashboards/leftsidebar' %>
+<% end %>
+
+<%= form_for(@user) do |f| %>
+  <div class="div-users">
+    <div class="col-lg-12">
+      <div class="div-backuser">
+        <%= link_to '< Back', users_path, :class=>'btn btn-default' %>
+      </div>
+      <div class="div-showing">
+        <div class="col-lg-3">
+          <div class="field">
+            <%= f.label :id, 'user ID:' %>
+            <%= @user.id %>
+          </div>
+          <div class="hidden-md hidden-sm hidden-xs">
+            <br/><br/>
+          </div>
+          <div class="field">
+            <%= f.label :fb_id, 'Facebook ID:' %>
+            <%= @user.fb_id %>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="field">
+            <%= f.label :first_name, 'First name:' %>
+            <%= @user.first_name %>
+          </div>
+          <div class="hidden-md hidden-sm hidden-xs">
+            <br/><br/>
+          </div>
+          <div class="field">
+            <%= f.label :last_name, 'Last name:' %>
+            <%= @user.last_name %>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="field">
+            <%= f.label :username, 'Username:' %>
+            <%= @user.username %>
+          </div>
+          <div class="hidden-md hidden-sm hidden-xs">
+            <br/><br/>
+          </div>
+          <div class="field">
+            <%= f.label :email, 'Email:' %>
+            <%= @user.email %>
+          </div>
+        </div>
+        <div class="col-lg-2">
+          <div class="hidden-md hidden-sm hidden-xs">
+            <br/><br/><br/>
+          </div>
+          <div class="field">
+            <%= f.label :country, 'Country:' %>
+            <%= @user.country %>
+          </div>
+        </div>
+        <div class="col-lg-1 text-center">
+          <%= link_to activate_user_users_path(@user), :class=>'btn btn-sm btn-danger', method: :post do %>
+            <%= @user.status == 'Active' ? 'Deactivate' : 'Activate' %>
+          <% end %>
+        </div>
+      </div>
+      <h4>Favorited properties</h4>
+      <div class="div-existing">
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Property ID</th>
+                <th>Walk score</th>
+                <th>Beds</th>
+                <th>Baths</th>
+                <th>Year Built</th>
+                <th>Lot size</th>
+                <th>Price per sqft</th>
+                <th>Assigned broker</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <%# @user.each do |user| %>
+                <tr>
+                  <td><%=  %></td>
+                  <td><%=  %></td>
+                  <td><%=  %></td>
+                  <td><%=  %></td>
+                  <td><%=  %></td>
+                  <td><%=  %></td>
+                  <td><%=  %></td>
+                  <td><%=  %></td>
+                </tr>
+              <%# end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

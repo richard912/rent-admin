@@ -1,0 +1,60 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+.div-sidebar {
+  .ul-sidebar {
+    list-style: none;
+    padding: 0 0;
+
+    li {
+      padding: 1.5em 3em;
+      border-bottom: 1px solid #E5E5E5;
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    li:before {
+      content: '';
+      background: #3298F0;
+      position: absolute;
+      width: 1em;
+      height: 4.5em;
+      background-position: 0 0;
+      left: 0;
+      top: 0;
+    }
+
+    li.active {
+      position: relative;
+    }
+
+    li:hover {
+      cursor: pointer;
+      position: relative;
+    }
+  }
+}
+
+.div-dashboards {
+  padding: 2em 0;
+
+  .div-counts {
+    background: white;
+    padding: 2em 0;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 2em;
+  }
+  .div-charts {
+    background: #D8D8D8;
+    border: 1em solid white;
+    width: 100%;
+    height: 40em;
+  }
+}

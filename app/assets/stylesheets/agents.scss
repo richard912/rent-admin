@@ -1,0 +1,140 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+.div-agents, .div-users, .div-listings {
+  padding: 1em;
+
+  .div-nopadding {
+    padding: 0 0;
+  }
+
+  .div-margin-bottom {
+    margin-bottom: 0.5em;
+  }
+  .div-newagent {
+    text-align: right;
+  }
+  .div-search, .div-showing {
+    overflow: hidden;
+    margin: 1em 0;
+    padding: 1.5em 0;
+    background: white;
+
+    label {
+      color: #9A9590;
+      font-weight: 400;
+    }
+    .btn {
+      float: none;
+      width: 100%;
+    }
+    .form-control {
+      display: inline-block;
+      width: -webkit-calc(100% - 7em)!important;
+      width: -moz-calc(100% - 7em)!important;
+      width: calc(100% - 7em)!important;
+
+      .btn {
+        width: 100%!important;
+      }
+    }
+  }
+  .div-showing {
+    label {
+      color: #9A9590;
+      font-weight: 400;
+      width: 6.5em;
+    }
+    span.active {
+      color: #81D135;
+    }
+    span.inactive {
+      color: #F3A536;
+    }
+    .div-avatar {
+      img {
+        border-radius: 5px;
+      }
+    }
+  }
+  .div-existing {
+    overflow: hidden;
+    background: white;
+    margin: 1em 0;
+
+    table {
+      width: 100%;
+      thead {
+        tr {
+          width: 100%;
+        }
+
+        th {
+          font-weight: 400;
+          padding: 1em;
+        }
+
+        th:last-child {
+          width: 1%;
+        }
+        background: #525252;
+        color: white;
+      }
+      tbody {
+        tr {
+          width: 100;
+          td {
+            padding: 1em;
+
+            .btn-action {
+              width: 6em;
+            }
+
+            span.active {
+              color: #81D135;
+            }
+            span.inactive {
+              color: #F3A536;
+            }
+
+          }
+        }
+        tr:hover {
+          background: #F5F5F5;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  input#file-upload {
+    display: none;
+  }
+  .custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+
+  div.modal-dialog {
+    width: 30px;
+  }
+}
+
+
+@media screen and (max-width: 1199px) {
+  .div-search {
+    label {
+      width: -webkit-calc(30% - 0.5em);
+      width: -moz-calc(30% - 0.5em);
+      width: calc(30% - 0.5em);
+    }
+
+    #search {
+      width: 70%!important;
+    }
+  }
+}

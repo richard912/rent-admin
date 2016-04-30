@@ -1,0 +1,102 @@
+<% content_for(:side_bar) do %>
+  <%= render 'dashboards/leftsidebar' %>
+<% end %>
+
+<div class="div-listings">
+  <div class="col-lg-12">
+    <div class="div-newagent">
+      <button class="btn btn-success" data-toggle="modal" id="btn_newlisting">Create Listing</button>
+    </div>
+    <div class="div-search">
+      <%= simple_form_for(:agents, url: search_listings_path, method: :post) do %>
+        <div class="col-lg-8 div-nopadding">
+          <div class="col-lg-4 div-margin-bottom">
+            <label>Status:</label>
+            <%= select_tag "status", options_for_select(["", "Active", "Inactive" ], @status), :class=>'js-select', "data-placeholder" => "Status..." %>
+          </div>
+          <div class="col-lg-4 div-margin-bottom">
+            <label>State:</label>
+            <%= select_tag "state", options_for_select(t('state_names'), @state), :class=>'js-select', "data-placeholder" => "State..."  %>
+          </div>
+          <div class="col-lg-4 div-margin-bottom">
+            <label>Type:</label>
+            <%= select_tag "type", options_for_select(["", "Apartment", "Single"], @listing_type), :class=>'js-select', "data-placeholder" => "Type..."  %>
+          </div>
+        </div>
+        <div class="col-lg-4 div-nopadding">
+          <div class="col-lg-8 div-margin-bottom">
+            <label>Search:</label>
+            <%= text_field_tag "search", nil, :class=>"form-control", :autocomplete=>:off, :value=>@search %>
+          </div>
+          <div class="col-lg-4">
+            <%= button_tag(type: 'submit', :class=>'btn btn-primary') do %>
+              Search
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="div-existing">
+      <div class="table-responsive">
+        <table id="table_listings">
+          <thead>
+            <tr>
+              <th>Listing ID</th>
+              <th>Type</th>
+              <th>State</th>
+              <th>Walk Score</th>
+              <th>Beds</th>
+              <th>Baths</th>
+              <th>Year Built</th>
+              <th>Lot size</th>
+              <th>Price per Sqft</th>
+              <th>Status</th>
+              <th colspan="2" class="text-center">Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @listings.each do |listing| %>
+              <tr data-link="<%= listing_path(listing.id)%>">
+                <td>L<%= listing.id %></td>
+                <td><%= listing.listing_type %></td>
+                <td><%= listing.state %></td>
+                <td><%= listing.walk_score %></td>
+                <td><%= listing.beds %></td>
+                <td><%= listing.baths %></td>
+                <td><%= listing.year_built %></td>
+                <td><%= listing.lot_size %></td>
+                <td><%= listing.price_per_sqft %></td>
+                <td><%= listing.status %></td>
+                <td>
+                  <%= link_to listing, method: :delete, data: { confirm: 'Are you sure?' }, :class=>'btn btn-sm btn-danger btn-action' do %>
+                    <i class="fa fa-trash"></i>
+                  <% end %>
+                </td>
+                <td><%= link_to 'view/edit', listing_path(listing), :class=>'btn btn-sm btn-primary btn-action' %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div> 
+
+<div class="modal fade" id="newListing" tabindex="-1" role="dialog" aria-labelledby="newListingLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="newAgentLabel">New Listing Creator</h4>
+      </div>
+      <div class="modal-body" style="overflow:hidden">
+        <%= render 'form' %>
+      </div>
+      <div class="modal-body">
+
+      </div>
+    </div>
+  </div>
+</div>
+

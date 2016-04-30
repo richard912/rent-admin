@@ -1,0 +1,36 @@
+<div class="table-responsive">
+  <table id="table_users">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Facebook ID</th>
+        <th>State</th>
+        <th>Status</th>
+        <th colspan="2" class="text-center">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr data-link="<%= user_path(user)%>">
+          <td>U<%= user.id %></td>
+          <td><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.fb_id %></td>
+          <td><%= user.state %></td>
+          <td><span class="<%= user.status == 'Active' ? 'active' : 'inactive' %>"><%= user.status %></span></td>
+          <td>
+            <%= link_to user, method: :delete, data: { confirm: 'Are you sure?' }, :class=>'btn btn-sm btn-danger btn-action' do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
+          </td>
+          <td><%= link_to 'view/edit', user_path(user), :class=>'btn btn-sm btn-primary btn-action' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

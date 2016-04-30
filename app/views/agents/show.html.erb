@@ -1,0 +1,115 @@
+<% content_for(:side_bar) do %>
+	<%= render 'dashboards/leftsidebar' %>
+<% end %>
+
+<%= form_for(@agent) do |f| %>
+	<div class="div-agents">
+		<div class="col-lg-12">
+	    <div class="div-backagent">
+	      <%= link_to '< Back', agents_path, :class=>'btn btn-default' %>
+	    </div>
+	    <div class="div-showing">
+	    	<div class="col-lg-3">
+	    		<div class="field">
+		    		<%= f.label :id, 'Agent ID:' %>
+						<%= @agent.id %>
+					</div>
+					<div class="hidden-md hidden-sm hidden-xs">
+						<br/><br/>
+					</div>
+					<div class="field">
+						<%= f.label :status, 'Status:' %>
+						<span class="<%= @agent.status == 'Active' ? 'active' : 'inactive' %>">
+							<%= @agent.status %>
+						</span>
+					</div>
+	    	</div>
+	    	<div class="col-lg-3">
+	    		<div class="field">
+		    		<%= f.label :first_name, 'First name:' %>
+						<%= @agent.first_name %>
+					</div>
+					<div class="hidden-md hidden-sm hidden-xs">
+						<br/><br/>
+					</div>
+					<div class="field">
+						<%= f.label :last_name, 'Last name:' %>
+						<%= @agent.last_name %>
+					</div>
+	    	</div>
+	    	<div class="col-lg-5">
+	    		<div class="field">
+		    		<%= f.label :country, 'Country:' %>
+						<%= @agent.country %>
+					</div>
+					<div class="hidden-md hidden-sm hidden-xs">
+						<br/><br/>
+					</div>
+					<div class="field">
+						<%= f.label :email, 'Email:' %>
+						<%= @agent.email %>
+					</div>
+	    	</div>
+	    	<div class="col-lg-1 text-center">
+          <%= link_to 'Edit', agent_path(@agent), :class=>'btn btn-sm btn-primary' %>
+          <p></p>
+          <%= link_to activate_agent_agents_path(@agent), :class=>'btn btn-sm btn-danger', method: :post do %>
+          	<%= @agent.status == 'Active' ? 'Deactivate' : 'Activate' %>
+          <% end %>
+          <p></p>
+          <%= link_to 'Update', agent_path(@agent, todo: 'activate'), :class=>'btn btn-sm btn-success' %>
+          <%#= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+	    	</div>
+	    </div>
+			<div class="div-showing">
+				<div class="col-lg-6">
+					<%= f.label :description, 'Description: ', :style=>'vertical-align:top' %>
+					<%= f.text_area :description, :class=>'form-control', :placeholder=>'Enter Keyword...', :rows=>'6' %>
+				</div>
+				<div class="col-lg-4">
+					<%= f.label :avatar, 'Profile picture:', :style=>'width:100%' %>
+					<%= f.file_field :avatar %>
+				</div>
+				<div class="col-lg-2 text-right">
+					<div class="div-avatar">
+						<%= image_tag @agent.avatar.url(:large), height: '135' %>
+					</div>
+				</div>
+			</div>
+			<h4>Assigned properties</h4>
+			<div class="div-existing">
+				<div class="table-responsive">
+		      <table>
+		        <thead>
+		          <tr>
+		            <th>Property ID</th>
+		            <th>Walk score</th>
+		            <th>Beds</th>
+		            <th>Baths</th>
+		            <th>Year Built</th>
+		            <th>Lot size</th>
+		            <th>Price per sqft</th>
+		            <th>Assigned broker</th>
+		          </tr>
+		        </thead>
+
+		        <tbody>
+		          <%# @agent.each do |user| %>
+		            <tr>
+		              <td><%=  %></td>
+		              <td><%=  %></td>
+		              <td><%=  %></td>
+		              <td><%=  %></td>
+		              <td><%=  %></td>
+		              <td><%=  %></td>
+		              <td><%=  %></td>
+		              <td><%=  %></td>
+		            </tr>
+		          <%# end %>
+		        </tbody>
+		      </table>
+		    </div>
+    	</div>
+		</div>
+	</div>
+<% end %>

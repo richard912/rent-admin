@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RentAdmin</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render 'layouts/header' %>
+
+<% if controller_name == 'sessions' %>
+	<%= yield %>
+<% else %>
+	<div class="hidden-md hidden-sm hidden-xs">
+		<div id="side-content">
+			<%= yield(:side_bar) %>
+		</div>
+	</div>
+	<div id="main-content">
+		<%= yield %>
+	</div>
+<% end %>
+<%= render 'layouts/footer' %>
+
+</body>
+</html>

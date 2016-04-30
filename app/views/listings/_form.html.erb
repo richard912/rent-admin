@@ -1,0 +1,74 @@
+<%= simple_form_for(@listing) do |f| %>
+  <% if @listing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+      <% @listing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-lg-6">
+    <div class="field">
+      <label>Type:</label>
+      <%= f.text_field :listing_type, :class=>'form-control', :required=>true, autocomplete: "off"%>
+    </div>    
+    <div class="field">
+      <label>State:</label>
+      <%= f.text_field "state", :class=>'form-control', :required=>true, autocomplete: "off"%>
+    </div>    
+    <div class="field">
+      <label>Year built:</label>
+      <%= f.number_field "year_built", :class=>'form-control', :required=>true, autocomplete: "off"%>
+    </div>    
+    <div class="field">
+      <label>Lot size:</label>
+      <%= f.number_field "lot_size", :class=>'form-control', :required=>true %>
+    </div>
+    <div class="field">
+      <label>Price per sqft:</label>
+      <%= f.number_field "price_per_sqft", :class=>'form-control', :required=>true %>
+    </div>
+    <div class="field">
+      <label>Beds:</label>
+      <%= f.number_field "beds", :class=>'form-control', :required=>true %>
+    </div>
+    <div class="field">
+      <label>Walk score:</label>
+      <%= f.number_field "walk_score", :class=>'form-control', :required=>true %>
+    </div>
+    <div class="field">
+      <label>MLS ID:</label>
+      <%= f.number_field "mls_id", :class=>'form-control', :required=>true %>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="field">
+      <label style="vertical-align: top;">Description:</label>
+      <%= f.text_area "description", :class=>'form-control', :required=>true, :rows=>'6' %>
+    </div>
+    <div class="field">
+      <label>Agent:</label>
+      <%= f.text_field "agent_id", :class=>'form-control', :required=>true, autocomplete: "off", :value=>@cur_id, :readonly=>true %>
+    </div>
+    <div class="field">
+      <label>Pictures:</label>
+      <label for="listing_avatar" class="custom-file-upload" style="border:1px solid #9A9590;padding:0.5em;color:#9A9590;width:auto;border-radius:5px;">
+        <i class="fa fa-plus-circle" style="font-size:2em;"></i>
+      </label>
+      <!-- <input id="listing_avatar" type="file" name="listing[avatar]" required="required" /> -->
+      <%= f.file_field :avatar, :style=>'display:none;' %>
+    </div>
+    <div class="hidden-md hidden-sm hidden-xs">
+      <br/><br/><br/><br/>
+    </div>
+    <div class="field" style="text-align:right;">
+      <%= f.submit( :class=>'btn btn-primary', :id=>'btn_createlisting') do %>
+        Create Listing
+      <% end %>
+    </div>
+  </div>
+<% end %>

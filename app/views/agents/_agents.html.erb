@@ -1,0 +1,31 @@
+<div class="table-responsive">
+  <table>
+    <thead>
+      <th>Agent ID</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>State</th>
+      <th>Status</th>
+      <th class="text-center" colspan="2">Action</th>
+    </thead>
+    <tbody>
+      <% @agents.each do |a| %>
+        <tr data-link="<%= agent_path(a)%>">
+          <td>A<%= a.id %></td>
+          <td><%= a.first_name %></td>
+          <td><%= a.last_name %></td>
+          <td><%= a.email %></td>
+          <td><%= a.state %></td>
+          <td><span class="<%= a.status == 'Active' ? 'active' : 'inactive' %>"><%= a.status %></span></td>
+          <td>
+            <%= link_to a, method: :delete, data: { confirm: 'Are you sure?' }, :class=>'btn btn-sm btn-danger btn-action' do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
+          </td>
+          <td><%= link_to 'view/edit', agent_path(a), :class=>'btn btn-sm btn-primary btn-action' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

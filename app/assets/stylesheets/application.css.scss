@@ -1,0 +1,184 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_self
+ *= require select2
+ */
+
+@import "bootstrap";
+@import "bootstrap-sprockets";
+@import "select2";
+@import "select2-bootstrap";
+@import "font-awesome";
+
+html, body {
+  height: 100%;
+}
+
+.div-header {
+  background: #3298F0;
+  height: 5em;
+
+  .div-logo {
+    float: left;
+    width: 20em;
+    color: white;
+    padding-left: 3em;
+    a {
+      text-decoration: none;
+      color: white; 
+    }
+  }
+  .div-topbar {
+    display: inline-block;
+    float: right;
+    background: white;
+    height: 5em;
+    width: -webkit-calc(100% - 20em);
+    width: -moz-calc(100% - 20em);
+    width: calc(100% - 20em);
+  }
+}
+
+.div-footer {
+  background: #4A4A4A;
+  height: 2em;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+.login-container {
+  height: -webkit-calc(100% - 7em);
+  height: -moz-calc(100% - 7em);
+  height: calc(100% - 7em);
+}
+
+.div-login {
+	background: #E5E5E5;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 10em;
+  margin-bottom: 5em;
+  padding: 1em 5em;
+
+  border-radius: 5px;
+
+  .field {
+    margin-bottom: 1em;
+
+    input {
+      height: 3.5em;
+    }
+  }
+  h2, h3 {
+    padding: 0 0;
+    margin: 0.5em 0;
+  }
+  .btn-info {
+    height: 3.5em;
+    background: #3298F0;
+    border-color: #3298F0;
+    width: 80%;
+    margin-bottom: 1.5em;
+  }
+  .btn-info:hover {
+    background: #3298F0;
+    border-color: #3298F0;
+  }
+}
+
+#side-content {
+  width: 20em;
+  float: left;
+}
+
+#main-content {
+  float: right;
+  width: -webkit-calc(100% - 20em);
+  width: -moz-calc(100% - 20em);
+  width: calc(100% - 20em);
+  background: #E8EBF1;
+
+  min-height: -webkit-calc(100% - 5em);
+  min-height: -moz-calc(100% - 5em);
+  min-height: calc(100% - 5em);
+}
+
+span.select2-selection.select2-selection--single {
+  height: 34px;
+}
+
+.modal-body {
+  label {
+    width: 9em;
+    font-weight: 400;
+  }
+  .field {
+    padding: 0.5em 0;
+  }
+  .form-control {
+    display: inline-block;
+    width: -webkit-calc(100% - 9.5em);
+    width: -moz-calc(100% - 9.5em);
+    width: calc(100% - 9.5em);
+  }
+}
+
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px; /* Adjusts for spacing */
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 1199px) {
+  #main-content { 
+    width: 100%;
+  }
+  .div-header {
+    .div-topbar {
+      background: transparent;
+    }
+  }
+}
+@media screen and (max-width: 992px) {
+
+  .div-login {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .div-login {
+    padding: 1em 1em;
+  }
+
+  .table-responsive {
+    margin-bottom: 0;
+  }
+}
+
+@import "dashboards";
+@import "agents";
