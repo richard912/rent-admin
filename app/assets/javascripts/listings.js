@@ -3,10 +3,11 @@
 
 var ready = function() {
 	$('#btn_newlisting').on('click', function() {
-    $('#newListing').modal();
+    	$('#newListing').modal();
   });
 
   $("#table_listings tr[data-link]").click(function() {
+  	
     window.location.href = $(this).attr('data-link');
   });
 };
