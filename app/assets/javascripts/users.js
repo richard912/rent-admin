@@ -3,9 +3,11 @@
 
 var ready = function() {
 	$("#table_users tr[data-link]").click(function() {
+		
     window.location.href = $(this).attr('data-link');
   })
 };
 
 $(document).ready(ready);
+
 $(document).on('page:load', ready);
